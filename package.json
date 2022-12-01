@@ -1,0 +1,22 @@
+{
+  "name": "students-project",
+  "version": "0.0.1",
+  "description": "Role-playing game with dynamic chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/penshinegor/StudentsProject-ITOMYCH-NodeJS.git"
+  },
+  "author": "Yehor Penshyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/penshinegor/StudentsProject-ITOMYCH-NodeJS/issues"
+  },
+  "homepage": "https://github.com/penshinegor/StudentsProject-ITOMYCH-NodeJS#readme",
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  }
+}

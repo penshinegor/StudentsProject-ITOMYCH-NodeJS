@@ -1,0 +1,1 @@
+export enum KindOfAdvantage { Strength = 'Strength', Agility = 'Agility', Intelligence = 'Intelligence' }
