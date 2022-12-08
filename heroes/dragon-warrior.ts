@@ -1,4 +1,4 @@
-import {KindOfAdvantage} from '../components/enums/kind-of-advantage';
+import {KindOfAdvantage} from '../components/enums/heroes-enums';
 import {Hero} from '../components/abstract-classes/hero';
 
 const HISTORY_OF_DRAGON_WARRIOR = 'As Sir Davion slew Slyrak in arranged combat, the Eldwurm\'s blood mingled with his own, sealing their essences together. ' +
@@ -18,3 +18,5 @@ class DragonWarrior extends Hero {
     applyAbility(): any { }
     attack(): any { }
 }
+
+export default DragonWarrior;

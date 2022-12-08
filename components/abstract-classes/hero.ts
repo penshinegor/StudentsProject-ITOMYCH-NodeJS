@@ -1,5 +1,5 @@
 import {Skills} from '../interfaces/skills';
-import {KindOfAdvantage} from '../enums/kind-of-advantage';
+import {KindOfAdvantage} from '../enums/heroes-enums';
 
 export abstract class Hero {
     private health: number;
@@ -24,9 +24,11 @@ export abstract class Hero {
         return `Health: ${this.health}\n` +
             `Advantage: ${this.advantage}\n` +
             `Kind of attack: ${this.skills.Attack}\n` +
-            `Ability: ${this.skills.Ability}\n`;
+            `Ability: ${this.skills.Ability}`;
     }
 
     abstract attack(): any;
     abstract applyAbility(): any;
 }
+
+export default Hero;

@@ -1,4 +1,4 @@
-import {KindOfAdvantage} from '../components/enums/kind-of-advantage';
+import {KindOfAdvantage} from '../components/enums/heroes-enums';
 import {Hero} from '../components/abstract-classes/hero';
 
 const HISTORY_OF_THIEF = 'Fear is the mother of rumor, and tales of Gondar\'s origins are nothing but hearsay. ' +
@@ -20,3 +20,5 @@ class Thief extends Hero {
     applyAbility(): any { }
     attack(): any { }
 }
+
+export default Thief;
