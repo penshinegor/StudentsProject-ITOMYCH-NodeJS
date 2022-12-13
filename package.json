@@ -4,7 +4,8 @@
   "description": "Role-playing game with dynamic chat",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx ts-node server/server.ts"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,8 @@
   },
   "homepage": "https://github.com/penshinegor/StudentsProject-ITOMYCH-NodeJS#readme",
   "dependencies": {
-    "ts-node": "^10.9.1"
+    "express": "^4.18.2",
+    "ts-node": "^10.9.1",
+    "ws": "^8.11.0"
   }
 }
