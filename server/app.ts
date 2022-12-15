@@ -1,6 +1,6 @@
 import * as WebSocket from 'ws';
-import server from './http/http';
-import {dispatchEvent} from './ws-controllers/ws-controllers';
+import server from './http';
+import {dispatchEvent} from './controllers/class-controller';
 
 const PORT = 8080;
 

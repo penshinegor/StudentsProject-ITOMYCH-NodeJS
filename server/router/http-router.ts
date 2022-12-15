@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {getListOfHeroes, loginValidation, signUpValidation, updateInfoValidation} from '../controllers/http-controllers';
+import {getListOfHeroes, loginValidation, signUpValidation, updateInfoValidation} from '../controllers/user-controller';
 
 const router = new Router();
 
