@@ -1,11 +1,11 @@
 import * as WebSocket from 'ws';
 import server from './http';
-import {dispatchEvent} from './controllers/class-controller';
+import {dispatchEvent} from './controllers/ws-controller';
 
 const PORT = 8080;
 
 server.listen(8080, () => {
-    console.log(`Our server has been started on port ${PORT}... and can get and send http methods`);
+    console.log(`Our server has been started on port ${PORT}...`);
 });
 
 const wss = new WebSocket.Server({ server });
