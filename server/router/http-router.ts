@@ -3,7 +3,7 @@ import UserController from '../controllers/user-controller';
 import {loginValidation, signUpValidation, updateInfoValidation} from '../middleware/user-validation-middleware';
 import ClassController from '../controllers/class-controller';
 
-const router = new Router();
+const router: Router = new Router();
 const classController = new ClassController();
 const userController = new UserController();
 
