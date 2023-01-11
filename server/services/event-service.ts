@@ -1,6 +1,3 @@
-import eventValidation from '../middleware/event-validation-middleware';
-import {TypeOfEvent} from '../../components/enums/event-enum';
-
 let listOfConnections = new Map();
 
 class EventService {
@@ -21,18 +18,6 @@ class EventService {
         }
         console.log('New user has been connected');
     }
-    public executeEvent(ws, event) {
-        const correctEvent = eventValidation(event);
-        if (correctEvent.type === TypeOfEvent.Attack) {
-            this.attack(correctEvent, ws);
-        } else if (correctEvent.type === TypeOfEvent.Ability) {
-            this.applyAbility(correctEvent, ws);
-        } else if (correctEvent.type === TypeOfEvent.Message) {
-            this.sendMessage(correctEvent);
-        } else {
-            this.restore(ws);
-        }
-    }
     public close(ws) {
         listOfConnections.forEach((client: WebSocket, key) => {
             if (client === ws) {
@@ -43,7 +28,7 @@ class EventService {
         console.log('One of users has been disconnected');
     }
 
-    private attack(correctEvent, ws) {
+    public attack(event, ws) {
         let mainId;
         for (let key of listOfConnections.keys()) {
             if (listOfConnections.get(key) === ws) {
@@ -51,13 +36,13 @@ class EventService {
             }
         }
         listOfConnections.forEach((client: WebSocket, key) => {
-            if (key === correctEvent.userId) {
+            if (key === event.userId) {
                 client.send(`You were attacked from user by ${mainId} id`);
             }
-            client.send(`Changed session from attack of user by ${correctEvent.userId} id`);
+            client.send(`Changed session from attack of user by ${event.userId} id`);
         });
     }
-    private applyAbility(correctEvent, ws) {
+    public applyAbility(event, ws) {
         let mainId;
         for (let key of listOfConnections.keys()) {
             if (listOfConnections.get(key) === ws) {
@@ -65,18 +50,18 @@ class EventService {
             }
         }
         listOfConnections.forEach((client: WebSocket, key) => {
-            if (key === correctEvent.userId) {
+            if (key === event.userId) {
                 client.send(`You were applied ability from user by ${mainId} id`);
             }
-            client.send(`Changed session from applying ability of user by ${correctEvent.userId} id`);
+            client.send(`Changed session from applying ability of user by ${event.userId} id`);
         });
     }
-    private sendMessage(correctEvent) {
+    public sendMessage(event) {
         listOfConnections.forEach((client: WebSocket) => {
-            client.send(correctEvent.message);
+            client.send(event.message);
         });
     }
-    private restore(ws) {
+    public restore(ws) {
         let mainId;
         for (let key of listOfConnections.keys()) {
             if (listOfConnections.get(key) === ws) {

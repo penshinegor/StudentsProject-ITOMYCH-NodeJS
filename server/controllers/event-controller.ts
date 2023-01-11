@@ -1,5 +1,7 @@
 import EventService from '../services/event-service';
 import errorHandler from '../error-handler/error-handler';
+import eventValidation from '../middleware/event-validation-middleware';
+import EventProvider from '../services/event-provider';
 
 let eventService = new EventService();
 
@@ -11,7 +13,8 @@ class EventController {
 
             ws.on('message', (event) => {
                 try {
-                    eventService.executeEvent(ws, event);
+                    eventValidation(event);
+                    EventProvider.executeEvent(event, eventService, ws);
                 }
                 catch (err) {
                     errorHandler(err, null, ws, null);
