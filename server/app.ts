@@ -1,6 +1,6 @@
-import * as WebSocket from 'ws';
+import {WebSocket} from 'ws';
 import server from './http';
-import {dispatchEvent} from './controllers/ws-controller';
+import EventController from './controllers/event-controller';
 
 const PORT = 8080;
 
@@ -8,22 +8,9 @@ server.listen(8080, () => {
     console.log(`Our server has been started on port ${PORT}...`);
 });
 
-const wss = new WebSocket.Server({ server });
+const wss: WebSocket = new WebSocket.Server({ server });
+const eventController = new EventController();
 
-wss.on('connection', ws => {
-    ws.send('Hi there, it\'s WebSocket server');
-    console.log('New user has been connected');
+eventController.listenEvents(wss);
 
-    ws.on('message', event => {
-        dispatchEvent(ws, event);
-    });
-
-    ws.on('close', () => {
-        console.log('Our user has been disconnected')
-    });
-
-    ws.onerror = () => {
-        console.log('Something went wrong');
-    }
-});
 console.log(`The WebSocket server is running on port ${PORT}...`);
